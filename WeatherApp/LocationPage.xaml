@@ -1,0 +1,36 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeatherApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:WeatherApp.ViewModel"
+    x:Class="WeatherApp.LocationPage"
+    mc:Ignorable="d"
+    xmlns:converters="using:WeatherApp.Converters"
+    
+
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <local:BoolToOppositeBoolConverter x:Key="BoolToOppositeBoolConverter"/>
+    </Page.Resources>
+
+    <StackPanel Margin="30">
+
+        <TextBlock Text="Choose city:"
+                   FontSize="32"/>
+        
+        <TextBox GotFocus="TxtBox_GotFocus"
+                 Name="txtBoxCity" 
+                 IsEnabled="{Binding IsChecked, ConverterParameter=IsChecked, Converter={StaticResource BoolToOppositeBoolConverter}, ElementName=chkBoxUseLocation}"/>
+
+        <CheckBox Name="chkBoxUseLocation"
+            Content="Use my location" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Checked="CheckBox_Checked"/>
+        <Button Name="btnDone"
+                Content="Done"
+                Margin="30"
+                HorizontalAlignment="Center"
+                Click="btnDone_Click"/>
+    </StackPanel>
+</Page>

@@ -1,0 +1,9 @@
+﻿<Application x:Class="WeatherApp.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="using:WeatherApp">
+    
+    <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:WeatherApp.ViewModel" />
+    </Application.Resources>
+</Application>

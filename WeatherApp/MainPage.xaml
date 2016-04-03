@@ -1,0 +1,260 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeatherApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:WeatherApp.ViewModel"
+    
+    x:Class="WeatherApp.MainPage"
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <ImageBrush 
+            ImageSource="{Binding Current.Background}"
+                        Stretch="Fill"/>
+    </Page.Background>
+
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Command="{Binding Path=RefreshCommand}" 
+                          Label="refresh" 
+                          Icon="Refresh"/>
+            <AppBarButton Icon="Map"
+                          Label="location"
+                          Click="Button_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+ 
+    <Page.DataContext>
+        <ViewModel:MainViewModel/>
+    </Page.DataContext>
+
+
+    <Pivot Name="pivot1">
+        <Pivot.Title>
+            <TextBlock Name="txtPivotTitle" 
+                       Text="{Binding City}" 
+                       FontSize="28"/>
+        </Pivot.Title>
+
+        
+        <PivotItem Header="Now"
+                   Margin="0">
+
+            <StackPanel VerticalAlignment="Top"
+				HorizontalAlignment="Center"
+				Margin="0,20,0,0">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="Black" 
+                                     Opacity="0.1"/>
+                </StackPanel.Background>
+
+                <TextBlock FontSize="80"
+					Text="{Binding Current.Temperature}"
+					HorizontalAlignment="Center"/>
+
+                <TextBlock FontSize="30"
+                           Text="{Binding Forecast[0].todayTemp}"
+                           HorizontalAlignment="Center"/>
+
+                <Image Source="{Binding Current.Pic}"
+					Height="120"/>
+
+                <TextBlock FontSize="28"
+                           Width="256"
+                           TextAlignment="Center"
+                           Text="{Binding Current.Description}"
+                           TextWrapping="WrapWholeWords"
+                           HorizontalAlignment="Center"/>
+                
+                <Grid Width="256"
+                      Margin="5,5,5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                
+                    <TextBlock Grid.Row="0"
+                               HorizontalAlignment="Left"
+                               FontSize="22"
+                               Text="Humidity:"/>
+                    <TextBlock Grid.Row="0"
+                               HorizontalAlignment="Right"
+                               FontSize="22"
+                               Text="{Binding Current.Humidity}"/>
+
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Left"
+                               FontSize="22"
+                               Text="Winds:"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               FontSize="22"
+                               Text="{Binding Current.Winds}"/>
+                    
+                    <TextBlock Grid.Row="2"
+                               HorizontalAlignment="Left"
+                               FontSize="22"
+                               Text="Pressure:"/>
+                    <TextBlock Grid.Row="2"
+                               HorizontalAlignment="Right"
+                               FontSize="22"
+                               Text="{Binding Current.Pressure}"/>
+
+                    <TextBlock Grid.Row="3"
+                               HorizontalAlignment="Left"
+                               FontSize="22"
+                               Text="Sunrise"/>
+                    <TextBlock Grid.Row="3"
+                               HorizontalAlignment="Right"
+                               FontSize="22"
+                               Text="{Binding Current.Sunrise}"/>
+
+                    <TextBlock Grid.Row="4"
+                               HorizontalAlignment="Left"
+                               FontSize="22"
+                               Text="Sunset"/>
+                    <TextBlock Grid.Row="4"
+                               HorizontalAlignment="Right"
+                               FontSize="22"
+                               Text="{Binding Current.Sunset}"/>
+                </Grid>
+            </StackPanel>
+
+            
+        </PivotItem>
+        <PivotItem Header="Forecast">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[1].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[1].Date}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1">
+                <TextBlock FontSize="28"
+                               Text="{Binding Forecast[2].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[2].Date}"/>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[3].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[3].Date}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3">
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[4].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[4].Date}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4">
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[5].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[5].Date}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5">
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[6].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[6].Date}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="6">
+                    <TextBlock FontSize="28"
+                               Text="{Binding Forecast[7].DayOfWeek}"/>
+                    <TextBlock FontSize="18"
+                               Text="{Binding Forecast[7].Date}"/>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[1].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[1].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[2].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[2].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[3].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[3].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[4].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[4].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[5].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[5].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[6].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[6].Pic}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="6"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="32"
+                               Text="{Binding Forecast[7].Temperature}"/>
+                    <Image VerticalAlignment="Top" Height="50" Source="{Binding Forecast[7].Pic}"/>
+                </StackPanel>
+
+            </Grid>
+
+        </PivotItem>
+    </Pivot>
+
+</Page>
