@@ -194,14 +194,16 @@ namespace WeatherApp.ViewModel
                 (useGps ? ("lat=" + latitude + "&lon=" + longitude) : ("q="+location)) + 
                 "&cnt=7" +
                 "&mode=json" +
-                "&units=metric";
+                "&units=metric" +
+                "&APPID=c119243972f7963d7d0a2e44c1a7fdfb";
 
             string urlCur = "http://api.openweathermap.org/data/2.5/" +
                 "weather?" +
                 (useGps ? ("lat=" + latitude + "&lon=" + longitude) : ("q=" + location)) +
                 "&mode=json" +
-                "&units=metric";
-            
+                "&units=metric" +
+                "&APPID=c119243972f7963d7d0a2e44c1a7fdfb";
+
             //getting the data
             try
             {
