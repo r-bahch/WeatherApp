@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+<Package
+    xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+   IgnorableNamespaces= "uap mp">
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
   <Identity Name="e2e1c671-8c4c-4b26-a6ed-4b98daeff2a4" Publisher="CN=Радослав" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="e2e1c671-8c4c-4b26-a6ed-4b98daeff2a4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -7,24 +14,30 @@
     <PublisherDisplayName>Радослав</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-  <Prerequisites>
-    <OSMinVersion>6.3.1</OSMinVersion>
-    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
-  </Prerequisites>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="WeatherApp.App">
-      <m3:VisualElements DisplayName="WeatherApp" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="WeatherApp" ForegroundText="light" BackgroundColor="transparent" ToastCapable="false">
-        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
-        </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="black" />
-        <m3:InitialRotationPreference>
-          <m3:Rotation Preference="portrait" />
-        </m3:InitialRotationPreference>
-      </m3:VisualElements>
-    </Application>
+      <uap:VisualElements 
+        DisplayName="WeatherApp" 
+        Square150x150Logo="Assets\Logo.png" 
+        Square44x44Logo="Assets\SmallLogo.png" 
+        Description="Weather App" 
+        BackgroundColor="transparent">
+        <DefaultTile 
+          Wide310x150Logo="Assets\WideLogo.png" 
+          Square71x71Logo="Assets\Square71x71Logo.png">
+        </DefaultTile>
+        <SplashScreen 
+          Image="Assets\SplashScreen.png" 
+          BackgroundColor="black" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+        </InitialRotationPreference>
+      </uap:VisualElements>
+    
+  </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClientServer" />
